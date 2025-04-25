@@ -16,8 +16,7 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception
     {
-//        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("./org/example/chatapp/FXML/Login.fxml")));
-//        Scene scene = new Scene(root);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/ca/chatappcs4/FXML/Login.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.setFill(Color.TRANSPARENT);

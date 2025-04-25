@@ -16,7 +16,7 @@
          <children>
             <Pane prefHeight="470.0" prefWidth="744.0" style="-fx-background-color: #2196f3;" styleClass="Pane" AnchorPane.leftAnchor="117.0" AnchorPane.rightAnchor="117.0" AnchorPane.topAnchor="120.0">
                <children>
-                  <Label layoutX="83.0" layoutY="251.0" prefHeight="64.0" prefWidth="222.0" text="Nhóm hoàng với vanh nè" textFill="WHITE" wrapText="true">
+                  <Label layoutX="83.0" layoutY="251.0" prefHeight="64.0" prefWidth="222.0" text="Click sign up to register an account !" textFill="WHITE" wrapText="true">
                      <font>
                         <Font size="16.0" />
                      </font>
@@ -36,7 +36,7 @@
                         <Image url="@../image/Logo.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="198.0" layoutY="96.0" text="Hoàng Vanh" textFill="WHITE">
+                  <Label layoutX="198.0" layoutY="96.0" text="Hoang Anh " textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -48,7 +48,7 @@
                   </Label>
                   <JFXButton buttonType="RAISED" layoutX="83.0" layoutY="328.0" onAction="#open_signup" prefHeight="32.0" prefWidth="93.0" styleClass="JFXButton" text="Sign Up" textFill="WHITE" />
                   <JFXButton buttonType="RAISED" layoutX="461.0" layoutY="328.0" onAction="#open_signin" prefHeight="32.0" prefWidth="93.0" styleClass="JFXButton" text="Sign In" textFill="WHITE" />
-                  <Label layoutX="578.0" layoutY="96.0" text="Hoàng Vanh" textFill="WHITE">
+                  <Label layoutX="578.0" layoutY="96.0" text="Hoang Anh " textFill="WHITE">
                      <font>
                         <Font size="20.0" />
                      </font>

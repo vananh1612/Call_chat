@@ -22,11 +22,11 @@ public class CennectionClass {
         Connection connection = null;
         String dbName = "chatapp";
         String username = "root";
-        String password = "";
+        String password = "12345";
 
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3307/" + dbName, username, password);
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + dbName, username, password);
 
 
         } catch (Exception e) {
@@ -117,7 +117,7 @@ public class CennectionClass {
             return statement.execute("INSERT INTO " + table + "(username,filename,ip,port,status,pathFile) VALUES ('"
                     + user + "','" + file.getName() + "','" + ip + "','" + port + "','" + status + "','" + filePath + "')");
         } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "Error while inserting the file data");
+            JOptionPane.showMessageDialog(null, "Error while inserting the file data" + e);
             return false;
         }
     }

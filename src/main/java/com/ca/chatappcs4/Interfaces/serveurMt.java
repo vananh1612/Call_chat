@@ -28,7 +28,7 @@ public class serveurMt extends Thread
         try
         {
             ServerSocket ss =new ServerSocket(9191) ;
-            System.out.println("Démarage de Serveur ......");
+            System.out.println("Start server.......");
 
             while (true)
             {
@@ -74,7 +74,7 @@ public class serveurMt extends Thread
 
                 String Ip =socket.getRemoteSocketAddress().toString() ;
 
-                System.out.println("Connexion de client numéro :"+num+" , IP : "+Ip);
+                System.out.println("Connection with client: "+num+" , IP : "+Ip);
                 pw.println(num);
 
                 while (true)
@@ -84,24 +84,24 @@ public class serveurMt extends Thread
                     switch (acces)
                     {
                         case 1 :
-                            System.out.println("User "+num+ "want to signUp");
+                            System.out.println("User "+num+ " want to SignUp");
                             User user = (User) ois.readObject();
                             pw.println(signUp(user));
                             break;
                         case 2 :
-                            System.out.println("User "+num+ "want to signIn");
+                            System.out.println("User "+num+ " want to SignIn");
                             User user2 = (User) ois.readObject();
                             result = signIn(user2);
                             pw.println(result);
                             break;
                         case 3 :
                             String nameFile = bis.readLine() ;
-                            System.out.println("User "+num+ "search file : "+nameFile);
+                            System.out.println("User "+num+ " search file : "+nameFile);
                             oos.writeObject(SearchFile(nameFile));
                             break;
                         case 4 :
                             File f = (File) ois.readObject();
-                            System.out.println("User "+num+ "share file : "+f.getName());
+                            System.out.println("User "+num+ " share file : "+f.getName());
                             String username = bis.readLine() ;
                             Enregistre(f,username);
                             break;
@@ -203,7 +203,7 @@ public class serveurMt extends Thread
             CennectionClass cennectionClass=new CennectionClass() ;
             System.out.println(name);
             User user = cennectionClass.SearchUserInfo(name);
-            result = cennectionClass.AddFile("annuair",user.getUsername(),f,user.getIp(),user.getPort(),user.getStatus()) ;
+            result = cennectionClass.AddFile("file",user.getUsername(),f,user.getIp(),user.getPort(),user.getStatus()) ;
 
         }
         public ArrayList<Ressource> getListRess()

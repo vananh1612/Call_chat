@@ -46,25 +46,23 @@ public class signUpController
     private TextField portTextField;
     JFXSnackbar snackbar ;
 
-    public InetAddress getIpAdresse() throws SocketException
-    {
-        Enumeration en = NetworkInterface.getNetworkInterfaces() ;
-        while (en.hasMoreElements())
-        {
-            NetworkInterface i = (NetworkInterface) en.nextElement();
-            for (Enumeration en2 = i.getInetAddresses();en2.hasMoreElements();)
-            {
-                InetAddress addr = (InetAddress) en2.nextElement();
-                if (!addr.isLoopbackAddress())
-                {
-                    if (addr instanceof Inet4Address)
-                    {
-                        return addr ;
+    public InetAddress getIpAdresse() throws SocketException {
+        Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces();
+        while (en.hasMoreElements()) {
+            NetworkInterface i = en.nextElement();
+            for (Enumeration<InetAddress> en2 = i.getInetAddresses(); en2.hasMoreElements();) {
+                InetAddress addr = en2.nextElement();
+                System.out.println("Found address: " + addr);
+                if (!addr.isLoopbackAddress()) {
+                    if (addr instanceof Inet4Address) {
+                        System.out.println("Returning IPv4 Address: " + addr);
+                        return addr;
                     }
                 }
             }
         }
-        return null ;
+        System.err.println("No suitable IP address found.");
+        return null;
     }
     @FXML
     void SignUp()
@@ -82,7 +80,7 @@ public class signUpController
             try
             {
 
-                Socket s =new Socket("localhost" ,9191) ;
+                Socket s =new Socket("192.168.240.125" ,9191) ;
 
                 InputStream is =s.getInputStream();
                 InputStreamReader isr =new InputStreamReader(is) ;
@@ -106,11 +104,8 @@ public class signUpController
 
                 //Read id
                 bf.readLine();
-
-                // <<1>> means that this is a registration request ==> For the server
                 pw.println(1);
 
-                //then we send the user  information to the server to add it in the data base
                 oos.writeObject(u);
 
                 //Get the reponse from server

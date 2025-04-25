@@ -28,6 +28,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -131,24 +132,7 @@ public class MainController  implements Initializable
     void About()
     {
 
-        BoxBlur boxBlur = new BoxBlur(3,3,3) ;
-        JFXButton Okey = new JFXButton("Okey") ;
-        JFXDialogLayout layout = new JFXDialogLayout() ;
-        ImageView imageView = new ImageView(new Image("/org/example/chatapp/image/Logo.png",50,50,true,false)) ;
 
-
-        Okey.getStyleClass().add("dialogButtonYes") ;
-        layout.setActions(Okey);
-        layout.setBody(new Text("be Peer  \n\nIdea of : Dr.Lemia Louail \nDeveloped by : Chahrazed Benrebbouh \n\nCopyright (C) 2020-2021 "));
-        layout.setHeading(imageView);
-        JFXDialog dialog = new JFXDialog(rootStackPane,layout,JFXDialog.DialogTransition.TOP) ;
-        dialog.show();
-        rootAnchorPane.setEffect(boxBlur);
-        Okey.addEventHandler(MouseEvent.MOUSE_CLICKED, (MouseEvent mouseevnt) ->
-        {
-            rootAnchorPane.setEffect(null);
-            dialog.close();
-        });
     }
 
     /*--------------Initialize method (execute when starting the application)-------------------------*/
@@ -472,6 +456,7 @@ public class MainController  implements Initializable
             }
         }
     }
+
     /*----------------------------Share a resource------------------------------------*/
     @FXML
     void UploadFile() throws IOException {
@@ -544,6 +529,7 @@ public class MainController  implements Initializable
     @FXML
     void downloadFile()
     {
+        //lấy dữ liêu tu table F
         indexF = tableF.getSelectionModel().getSelectedIndex();
         if (indexF <= -1)
         {
@@ -888,6 +874,16 @@ public class MainController  implements Initializable
                             addNodeFxMethodRight(msg);
                         }
 
+                    });
+                    textFielMessage.setOnKeyPressed(event -> {
+                        if (event.getCode() == KeyCode.ENTER) { // Kiểm tra xem phím Enter có được nhấn không
+                            if (!textFielMessage.getText().isEmpty()) {
+                                String msg = textFielMessage.getText(); // Lấy nội dung tin nhắn
+                                textFielMessage.clear(); // Xóa nội dung trong ô nhập
+                                pw.println(msg); // Gửi tin nhắn qua PrintWriter
+                                addNodeFxMethodRight(msg); // Gọi phương thức thêm tin nhắn vào giao diện
+                            }
+                        }
                     });
                 }
                 else

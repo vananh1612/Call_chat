@@ -61,7 +61,7 @@ public class loginController
         {
             try
             {
-                connectionSocket =new Socket("localhost" ,9191) ;
+                connectionSocket =new Socket("192.168.240.125" ,9191) ;
 
 
                 OutputStream os = connectionSocket.getOutputStream() ;
@@ -119,7 +119,6 @@ public class loginController
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/ca/chatappcs4/FXML/Main.fxml"));
         MainController mainController = new MainController() ;
 
-        //En passe les info d'utlisateur vers le main interface
         mainController.getInfoConnexion(connectionSocket ,username,oos,ois);
 
         Parent root1 = fxmlLoader.load();
